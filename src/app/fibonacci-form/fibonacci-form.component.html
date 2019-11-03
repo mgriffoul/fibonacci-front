@@ -1,10 +1,8 @@
-<div class="container">
-  <div class="row">
-    <div class="col-md-6 offset-md-3">
-      <h3>Register</h3>
-      <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+<div id="container">
+  <div >
+      <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="form">
         <div class="form-group">
-          <label>request number</label>
+          <p>request number</p>
           <input type="text" formControlName="requestNumber" class="form-control" [ngClass]="{ 'is-invalid': submitted &amp;&amp; registerForm.controls.requestNumber.errors }" />
           <div *ngIf="submitted &amp;&amp; registerForm.controls.requestNumber.errors" class="text-danger">
             <div *ngIf="registerForm.controls.requestNumber.errors.required">request Number is required</div>
@@ -12,9 +10,8 @@
         </div>
 
         <div class="form-group">
-          <button class="btn btn-primary" [disabled]="!registerForm.valid">Register</button>
+          <button class="btn" [disabled]="!registerForm.valid">Submit</button>
         </div>
       </form>
-    </div>
   </div>
 </div>
