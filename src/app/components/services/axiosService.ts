@@ -1,21 +1,19 @@
 import axios from "axios";
-import {HttpResponse} from "@angular/common/http";
+import {API_URL, CLOSEST_SERVICE_BASE_URL, REQUEST_NUMBER_PARAM} from './constants'
 
-function getClosest(requestNumber) {
+function getRequestNumber(requestNumber) {
 
-  return axios.get('http://127.0.0.1:5000/fibonacci/closer?number=' + requestNumber,
-    {
-      timeout: 1000,
-    })
+  return axios({
+    method: 'get',
+    url: API_URL + CLOSEST_SERVICE_BASE_URL + REQUEST_NUMBER_PARAM + requestNumber,
+    responseType: 'json'
+  })
     .then(function (response) {
-      debugger;
-      // handle success
-      console.log('You ARE LOGGED ' + response.data.result + ' with TOKEN : ');
-      return response.data.result
+      return response.data.result;
+    })
+    .catch(function (error) {
+       return error;
     });
 }
 
-export default getClosest;
-
-
-
+export default getRequestNumber;
