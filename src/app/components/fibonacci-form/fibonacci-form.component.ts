@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import axios from "axios";
 
 @Component({
   selector: 'fibonacci-form',
@@ -19,13 +20,25 @@ export class FibonacciFormComponent implements OnInit{
   }
 
   onSubmit() {
+    let result = '';
     this.submitted = true;
     if (this.registerForm.invalid) {
-      alert('FAIL')
+      alert('FAIL');
       return;
     }
-    alert('SUCCES')
-    console.warn(this.registerForm.value);
+    console.warn(this.registerForm.get('requestNumber').value);
+
+    axios.get('http://127.0.0.1:5000/fibonacci/closest?requestNumber=' + this.registerForm.get('requestNumber').value,
+      {
+        timeout: 1000,
+      })
+      .then(function (response) {
+        // handle success
+        console.log('You ARE LOGGED ' + response.data.result + ' with TOKEN : ');
+        result = response.data.result
+      });
+
+    alert('receive closest' + result)
   }
 
 }
