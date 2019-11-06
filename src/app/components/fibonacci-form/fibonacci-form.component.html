@@ -1,6 +1,11 @@
 <div id="container">
+
+
   <div >
       <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="form">
+        <span>
+    Entrez un nombre positif, et cliquez sur submit pour obtenir le nombre de la suite de fibonacci le plus proche
+  </span>
         <div class="form-group">
           <p>request number</p>
           <input type="text" formControlName="requestNumber" class="form-control" [ngClass]="{ 'is-invalid': submitted &amp;&amp; registerForm.controls.requestNumber.errors }" (focus)="resetForm()"/>
