@@ -1,7 +1,7 @@
 import axios from "axios";
-import {API_URL, CLOSEST_SERVICE_BASE_URL, REQUEST_NUMBER_PARAM} from './constants'
+import {API_URL, CLOSEST_SERVICE_BASE_URL, REQUEST_NUMBER_PARAM} from './fibonacci-api-constants'
 
-function getRequestNumber(requestNumber) {
+function getClosestFibonacciNumber(requestNumber) {
 
   return axios({
     method: 'get',
@@ -16,4 +16,4 @@ function getRequestNumber(requestNumber) {
     });
 }
 
-export default getRequestNumber;
+export default getClosestFibonacciNumber;

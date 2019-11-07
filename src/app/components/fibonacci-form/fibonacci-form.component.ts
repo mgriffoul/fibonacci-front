@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import getRequestNumber from "../services/axiosService";
+import getClosestFibonacciNumber from "../services/fibonacci-api-service";
 import {ERROR_MESSAGE_PATTERN, ERROR_MESSAGE_REQUIRED, REGEX_NUMBER_ONLY} from "./constants";
 
 @Component({
@@ -38,7 +38,7 @@ export class FibonacciFormComponent implements OnInit {
         return;
       }
     }
-    getRequestNumber(this.registerForm.get('requestNumber').value).then(data => this.apiResult = data);
+    getClosestFibonacciNumber(this.registerForm.get('requestNumber').value).then(data => this.apiResult = data);
   }
 
 
